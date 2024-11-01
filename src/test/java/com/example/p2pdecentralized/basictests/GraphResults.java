@@ -1,4 +1,4 @@
-package com.example.p2pdecentralized;
+package com.example.p2pdecentralized.basictests;
 
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
