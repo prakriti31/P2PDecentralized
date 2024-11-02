@@ -3,6 +3,57 @@
 ## Overview
 This project implements a decentralized peer-to-peer messaging system that allows peers to create topics, subscribe to them, publish messages, and manage topics efficiently. The system employs a Distributed Hash Table (DHT) to evenly distribute topics among multiple nodes.
 
+# Project Structure
+
+The project structure is organized into separate directories for main application code (`src/main/java`) and testing code (`src/test/java`), both under the base package `com.example.p2pdecentralized`. Here’s a breakdown of the structure:
+
+## Main Application Code 
+(`src/main/java/com.example.p2pdecentralized`)
+
+- ### config
+  - **AppConfig**: Contains configuration classes, such as `AppConfig`, which likely holds setup and configuration details for initializing the application.
+
+- ### controller
+  - **PeerController**: Manages the peer-related HTTP requests and serves as the main entry point for API requests.
+
+- ### model
+  - **DHT**: Represents the Distributed Hash Table (DHT), a core data structure for managing distributed data in the peer-to-peer network.
+  - **EventLogger**: Responsible for logging events, actions, or messages within the peer-to-peer network, aiding in tracking and debugging.
+  - **HypercubeTopology**: Represents the hypercube topology, which defines how nodes are connected in a specific network structure.
+  - **TopicManager**: Manages topics, allowing for creation, deletion, subscription, and publication of topics.
+
+- ### service
+  - **PeerNode**: Represents individual peers in the network, handling operations such as publishing and subscribing to topics.
+  - **P2PApplication**: The main entry point of the application, which initializes and runs the peer-to-peer application.
+
+## Test Code (`src/test/java/com.example.p2pdecentralized`)
+
+- ### basictests
+  - **ApiBenchmarking**: Benchmarks various APIs by measuring their latency, throughput, or other metrics.
+  - **GraphResults**: Generates graphical representations of the benchmarking data, possibly using the CSVs in the project.
+  - **PeerSimulation.java**: Simulates peer interactions, testing how peers communicate with each other in the network.
+
+- ### bonusexperiments
+  - **DataDistributionExperiment**: Tests data distribution across peers to analyze load balancing or data redundancy.
+  - **NetworkLatencyExperiment**: Analyzes network latency across the peer-to-peer network, measuring message delivery times.
+  - **NodeFailureExperiment**: Tests how the network responds to node failures, assessing fault tolerance and recovery.
+
+- ### experiments
+  - #### dht
+    - **DHTCollisionRateExperiment**: Tests collision rates in the DHT, analyzing hash function effectiveness.
+    - **DHTDistributionExperiment**: Tests the distribution of data across the DHT.
+    - **DHTLoadTestingExperiment**: Measures DHT performance under high load.
+    - **DHTRuntimeExperiment**: Measures the runtime efficiency of DHT operations.
+    - **DHTSensitivityTestExperiment**: Assesses the sensitivity of DHT performance to various parameters.
+    - **DHTSpaceComplexityExperiment**: Analyzes space complexity requirements of the DHT.
+    - **DHTVarianceExperiment**: Tests variance in data distribution and access times in the DHT.
+
+  - #### requestforwarding
+    - **RequestForwarding.java**: Contains the logic for forwarding requests across peers in the network.
+    - **PeerTask** and **RequestForwarding**: Auxiliary classes supporting the request forwarding mechanism.
+
+This structure effectively separates core components, configurations, and different types of experiments and tests, making the codebase modular and easier to maintain.
+
 ## API Endpoints
 
 ### 1. Create Topic
