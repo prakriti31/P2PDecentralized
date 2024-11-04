@@ -1,5 +1,21 @@
 # Peer-to-Peer Decentralized System
 
+# Peer-to-Peer Decentralized System
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Project Structure](#project-structure)
+3. [API Endpoints](#api-endpoints)
+4. [Time Complexity Analysis](#time-complexity-analysis)
+5. [Experiment Setup](#experiment-setup-for-measuring-runtime-cost)
+6. [Experiments for Even Distribution](#experiments-for-even-distribution)
+7. [Analysis and Conclusion](#analysis-and-conclusion)
+8. [Build Instructions](#build-instructions)
+9. [Request Forwarding Experiment](#experiment-design)
+10. [Overview of Proof.java](#overview-of-proofjava)
+11. [Distributed Hash Table (DHT) Experiments](#distributed-hash-table-dht-experiments)
+
 ## Overview
 This project implements a decentralized peer-to-peer messaging system that allows peers to create topics, subscribe to them, publish messages, and manage topics efficiently. The system employs a Distributed Hash Table (DHT) to evenly distribute topics among multiple nodes.
 
@@ -185,8 +201,7 @@ The experiments confirm that the DHT’s hash function:
 - Handles varying loads effectively, maintaining distribution balance.
 - Minimizes collision rates and ensures a uniform distribution even with minor variations.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 ## Build Instructions
 To build the project, run the following command:
@@ -237,29 +252,34 @@ Create Topics on Each Node:
 
 Use the API to create a unique topic on each node. For example, create Topic0 on Node 8080, Topic1 on Node 8081, etc.
 Example API Calls:
-bash
-Copy code
-curl -X POST "http://localhost:8080/api/topic" -d "topic=Topic0"
-curl -X POST "http://localhost:8081/api/topic" -d "topic=Topic1"
-curl -X POST "http://localhost:8082/api/topic" -d "topic=Topic2"
+
+```curl -X POST "http://localhost:8080/api/topic" -d "topic=Topic0"```
+
+```curl -X POST "http://localhost:8081/api/topic" -d "topic=Topic1"```
+
+```curl -X POST "http://localhost:8082/api/topic" -d "topic=Topic2"```
 # Continue for all nodes...
 Publish Messages:
 
 Publish messages to each topic created above.
 Example API Calls:
 bash
-Copy code
-curl -X POST "http://localhost:8080/api/publish" -d "topic=Topic0" -d "message=Hello from Topic0"
-curl -X POST "http://localhost:8081/api/publish" -d "topic=Topic1" -d "message=Hello from Topic1"
+
+```curl -X POST "http://localhost:8080/api/publish" -d "topic=Topic0" -d "message=Hello from Topic0"```
+
+```curl -X POST "http://localhost:8081/api/publish" -d "topic=Topic1" -d "message=Hello from Topic1"```
+
 # Continue for all nodes...
 Access Topics from All Nodes:
 
 From each node, attempt to pull messages from every other node’s topics.
 Example API Calls from Node 8080:
-bash
-Copy code
-curl -X GET "http://localhost:8081/api/pull?topic=Topic1"  # From Node 8081
-curl -X GET "http://localhost:8082/api/pull?topic=Topic2"  # From Node 8082
+
+
+```curl -X GET "http://localhost:8081/api/pull?topic=Topic1"```  # From Node 8081
+
+```curl -X GET "http://localhost:8082/api/pull?topic=Topic2"```  # From Node 8082
+
 # Continue for all topics on all nodes...
 Logging:
 
@@ -365,6 +385,4 @@ The experiments conducted successfully demonstrated the capabilities and limitat
 
 Overall, these experiments highlighted the importance of robustness and efficiency in DHT implementations, offering critical insights for future developments in distributed systems. The successful execution of these experiments validates the DHT framework's potential to handle real-world challenges, paving the way for more advanced applications in distributed computing environments.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
